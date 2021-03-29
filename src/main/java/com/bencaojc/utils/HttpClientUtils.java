@@ -183,10 +183,11 @@ public class HttpClientUtils {
 
         assertStatus(response);
         HttpEntity entity = response.getEntity();
+        EntityUtils.toString(entity, utf8);
 
 
         if (entity != null) {
-            return EntityUtils.toString(entity, utf8);
+            return stringBuilder.toString();
         }
 
         return null;
@@ -406,5 +407,30 @@ public class HttpClientUtils {
         }
     }
 
+
+    public static String getWithCookie(String url, Map<String, String> params, Map<String, String> headerMap, CookieStore cookieStore, HttpHost proxy, String charset)
+            throws IOException, URISyntaxException {
+
+
+        HttpClient client = buildHttpClient(true, cookieStore, proxy);
+        HttpGet get = buildHttpGet(url, params, charset);
+        seHttpHeader(get, headerMap);
+
+
+
+        HttpResponse response = client.execute(get);
+        assertStatus(response);
+        HttpEntity entity = response.getEntity();
+        if (entity != null) {
+            return EntityUtils.toString(entity, charset);
+        }
+        return null;
+    }
+
+
+    public void getWithCookie(String postCookoe) {
+
+
+    }
 }
 
