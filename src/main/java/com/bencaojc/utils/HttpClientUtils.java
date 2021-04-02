@@ -25,12 +25,11 @@ import org.apache.http.params.HttpParams;
 import org.apache.http.protocol.HTTP;
 import org.apache.http.util.EntityUtils;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
+import java.net.HttpURLConnection;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.net.URL;
+import java.util.*;
 
 public class HttpClientUtils {
 
@@ -152,13 +151,14 @@ public class HttpClientUtils {
         return null;
     }
 
-
-    public static String postGotCook(String url, Map<String, String> params)
+/*
+* 获取cookie信息
+* */
+    public static String doPostGetCookie(String url, Map<String, String> params)
             throws URISyntaxException, IOException {
 
         HttpClient client = buildHttpClient(true);
         HttpPost postMethod = buildHttpPost(url, params, utf8);
-
 
         HttpResponse response = client.execute(postMethod);
         System.out.println(545);
@@ -178,13 +178,9 @@ public class HttpClientUtils {
             }
         }
 
-        System.out.println("头信息" + stringBuilder);
-
-
         assertStatus(response);
         HttpEntity entity = response.getEntity();
         EntityUtils.toString(entity, utf8);
-
 
         if (entity != null) {
             return stringBuilder.toString();
@@ -192,6 +188,262 @@ public class HttpClientUtils {
 
         return null;
     }
+
+
+    /*
+    * 上传文件
+    * */
+    public static String doPostUpfile(String url, Map<String, String> params)
+            throws URISyntaxException, IOException {
+
+        HttpClient client = buildHttpClient(true);
+        HttpPost postMethod = buildHttpPost(url, params, utf8);
+
+        HttpResponse response = client.execute(postMethod);
+        System.out.println(545);
+        Header[] responseHeader = response.getHeaders("Set-Cookie");
+        int length = responseHeader.length;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < length; i++) {
+            if (responseHeader[i] != null) {
+                if ("Set-Cookie".equals(responseHeader[i].getName())) {
+                    int index = responseHeader[i].getValue().indexOf(";");
+                    if (i == length - 1) {
+                        stringBuilder.append(responseHeader[i].getValue().substring(0, index));
+                    } else {
+                        stringBuilder.append(responseHeader[i].getValue().substring(0, index) + "; ");
+                    }
+                }
+            }
+        }
+
+        assertStatus(response);
+        HttpEntity entity = response.getEntity();
+        EntityUtils.toString(entity, utf8);
+
+        if (entity != null) {
+            return stringBuilder.toString();
+        }
+
+        return null;
+    }
+
+
+
+
+    /*
+    * 模拟表格上传文件
+    * */
+    public static String formPostUploadFile(String urlStr, Map<String, String> textMap,
+                                    Map<String, String> fileMap) {
+        String res = "";
+        HttpURLConnection conn = null;
+        String BOUNDARY = "---------------------------123821742118716"; //boundary就是request头和上传文件内容的分隔符
+        try {
+            URL url = new URL(urlStr);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(30000);
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Connection", "Keep-Alive");
+            conn
+                    .setRequestProperty("User-Agent",
+                            "Mozilla/5.0 (Windows; U; Windows NT 6.1; zh-CN; rv:1.9.2.6)");
+            conn.setRequestProperty("Content-Type",
+                    "multipart/form-data; boundary=" + BOUNDARY);
+            OutputStream out = new DataOutputStream(conn.getOutputStream());
+            // text
+            if (textMap != null) {
+                StringBuffer strBuf = new StringBuffer();
+                Iterator iter = textMap.entrySet().iterator();
+                while (iter.hasNext()) {
+                    Map.Entry entry = (Map.Entry) iter.next();
+                    String inputName = (String) entry.getKey();
+                    String inputValue = (String) entry.getValue();
+                    if (inputValue == null) {
+                        continue;
+                    }
+                    strBuf.append("\r\n").append("--").append(BOUNDARY).append(
+                            "\r\n");
+                    strBuf.append("Content-Disposition: form-data; name=\""
+                            + inputName + "\"\r\n\r\n");
+                    strBuf.append(inputValue);
+                }
+                out.write(strBuf.toString().getBytes());
+            }
+            // file
+            if (fileMap != null) {
+                Iterator iter = fileMap.entrySet().iterator();
+                while (iter.hasNext()) {
+                    Map.Entry entry = (Map.Entry) iter.next();
+                    String inputName = (String) entry.getKey();
+                    String inputValue = (String) entry.getValue();
+                    if (inputValue == null) {
+                        continue;
+                    }
+                    File file = new File(inputValue);
+                    String filename = file.getName();
+
+                    StringBuffer strBuf = new StringBuffer();
+                    strBuf.append("\r\n").append("--").append(BOUNDARY).append(
+                            "\r\n");
+                    strBuf.append("Content-Disposition: form-data; name=\""
+                            + inputName + "\"; filename=\"" + filename
+                            + "\"\r\n");
+//                    strBuf.append("Content-Type:" + contentType + "\r\n\r\n");
+                    strBuf.append("Content-Type:" + "multipart/form-data; boundary=----WebKitFormBoundary" + "\r\n\r\n");
+                    out.write(strBuf.toString().getBytes());
+                    DataInputStream in = new DataInputStream(
+                            new FileInputStream(file));
+                    int bytes = 0;
+                    byte[] bufferOut = new byte[1024];
+                    while ((bytes = in.read(bufferOut)) != -1) {
+                        out.write(bufferOut, 0, bytes);
+                    }
+                    in.close();
+                }
+            }
+            byte[] endData = ("\r\n--" + BOUNDARY + "--\r\n").getBytes();
+            out.write(endData);
+            out.flush();
+            out.close();
+            // 读取返回数据
+            StringBuffer strBuf = new StringBuffer();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    conn.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                strBuf.append(line).append("\n");
+            }
+            res = strBuf.toString();
+            reader.close();
+            reader = null;
+        } catch (Exception e) {
+            System.out.println("发送POST请求出错。" + urlStr);
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+                conn = null;
+            }
+        }
+        return res;
+    }
+
+
+
+
+
+
+
+    public static String uploadFile(String fileName,String cookieStr) {
+
+
+
+        String excelPath = "D:\\soft\\develop\\aotian\\src\\main\\resources\\13\\16.xls";
+        try {
+
+            System.out.println("上传文件中：" + fileName);
+
+
+            Map<String,String> cookie = new HashMap<>();
+            String[] split = cookieStr.split("=");
+            if (null != split){
+                cookieStr = split[1];
+            }
+
+            // 换行符
+            final String newLine = "\r\n";
+            final String boundaryPrefix = "--";
+            // 定义数据分隔线
+            String BOUNDARY = "JkNfowlhTI2ZS4zN";
+            // 服务器的域名
+            URL url = new URL("http://172.16.10.246:89/module/importXls/impworkguest_ajax.php?action=upfile&elid=file_add&istest=1");
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            // 设置为POST情
+            conn.setRequestMethod("POST");
+            // 发送POST请求必须设置如下两行
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setUseCaches(false);
+            // 设置请求头参数
+            conn.setRequestProperty("connection", "close");
+            conn.setRequestProperty("Content-Type", "multipart/form-data; boundary=----WebKitFormBoundary" + BOUNDARY);
+            conn.setRequestProperty("Cookie", cookieStr);
+
+
+            OutputStream out = new DataOutputStream(conn.getOutputStream());
+
+            // 上传文件
+            File file = new File(excelPath);
+            StringBuilder sb = new StringBuilder();
+            sb.append(boundaryPrefix);
+            sb.append(BOUNDARY);
+            sb.append(newLine);
+            // 文件参数,photo参数名可以随意修改
+            /*sb.append("Content-Disposition: form-data;name=\"photo\";filename=\"" + fileName
+                    + "\"" + newLine);*/
+            sb.append("Content-Type:multipart/form-data;");
+            // 参数头设置完以后需要两个换行，然后才是参数内容
+            sb.append("fileElementId:'file_add' ");
+            sb.append("dataType:'text' ");
+            sb.append(newLine);
+
+            // 将参数头的数据写入到输出流中
+            out.write(sb.toString().getBytes());
+
+            // 数据输入流,用于读取文件数据
+            DataInputStream in = new DataInputStream(new FileInputStream(
+                    file));
+            byte[] bufferOut = new byte[1024];
+            int bytes = 0;
+            // 每次读1KB数据,并且将文件数据写入到输出流中
+            while ((bytes = in.read(bufferOut)) != -1) {
+                out.write(bufferOut, 0, bytes);
+            }
+            // 最后添加换行
+            out.write(newLine.getBytes());
+            in.close();
+
+            // 定义最后数据分隔线，即--加上BOUNDARY再加上--。
+            byte[] end_data = (newLine + boundaryPrefix + BOUNDARY + boundaryPrefix + newLine)
+                    .getBytes();
+            // 写上结尾标识
+            out.write(end_data);
+            out.flush();
+            out.close();
+
+
+
+
+            // 定义BufferedReader输入流来读取URL的响应
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    conn.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+                return line;
+            }
+
+        } catch (Exception e) {
+            System.out.println("发送POST请求出现异常！" + e);
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
+
+
+
+
+
+
+
+
 
 
 

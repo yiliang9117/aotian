@@ -19,7 +19,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class GithubRepoPageProcessor {
+public class DemoTest {
 
 
 
@@ -34,7 +34,7 @@ public class GithubRepoPageProcessor {
         prams.put("pass","123");
 
         String urlStr = "http://172.16.10.246:89/login.php";
-        String postCookoe = httpClientUtils.postGotCook(urlStr ,prams );
+        String postCookoe = httpClientUtils.doPostGetCookie(urlStr ,prams );
 
         System.out.println(1+postCookoe);
         gotoMainPage(postCookoe);
@@ -57,20 +57,17 @@ public class GithubRepoPageProcessor {
 
         String url = "http://172.16.10.246:89/main.php";
         System.out.println("获取的：" + cookie);
-        doGet(url , cookie);
-
-
-
-
-
+        String s = doGetWithCookis(url, cookie);
+        System.out.println(s);
     }
+
 
     /**
      * HTTP GET请求 带 cookie
      * @param url 请求地址
      * @return 响应字符串
      */
-    public static String doGet(String url,Map<String,String> cookie) {
+    public static String doGetWithCookis(String url,Map<String,String> cookie) {
         CloseableHttpClient httpClient = null;
         CloseableHttpResponse response = null;
         String result = "";

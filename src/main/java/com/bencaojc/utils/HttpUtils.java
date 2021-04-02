@@ -4,13 +4,17 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
 import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.config.RequestConfig;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.DefaultHttpRequestRetryHandler;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.util.EntityUtils;
@@ -21,13 +25,13 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.*;
 
-import static com.bencaojc.utils.HttpClientUtils.utf8;
 
 public class HttpUtils {
 
     public static final String urlString = "http://172.16.10.246:89/login.php?user=\"王宜亮\"&pass=123";  //先登录保存cookie
     public static final String urlString2 = "http://......";
     public String sessionId = "";
+
 
     public void doGet(String urlStr) throws IOException{
         String key = "";
@@ -152,23 +156,11 @@ public class HttpUtils {
 
 
 
-
         Map<String, String> prams = new HashMap<>();
         prams.put("user","王宜亮");
         prams.put("pass","123");
 
         CloseableHttpClient client;
-
-
-
-
-
-
-
-
-
-
-
 
 
         URL url = new URL(urlString);
@@ -202,12 +194,135 @@ public class HttpUtils {
         System.out.println(sb.toString());
     }
 
-    public static void main(String[] args) throws IOException {
+/*    public static void main(String[] args) throws IOException {
 
 
         HttpUtils hcu = new HttpUtils();
         hcu.doGet(urlString);
         hcu.doGet(urlString2);
+    }*/
+
+
+
+    public static String doGetWithCookis(String url,Map<String,String> cookie) {
+        CloseableHttpClient httpClient = null;
+        CloseableHttpResponse response = null;
+        String result = "";
+        try {
+            httpClient = HttpClients.createDefault();
+            HttpGet httpGet = new HttpGet(url);
+            httpGet.setHeader("Authorization", "Bearer da3efcbf-0845-4fe3-8aba-ee040be542c0");
+            StringBuffer cookieStr = new StringBuffer();
+            Iterator<Map.Entry<String,String>> iterator = cookie.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String,String> next = iterator.next();
+                cookieStr.append(next.getKey()).append("=").append(next.getValue()).append(";");
+            }
+            if(cookieStr.length() > 0) {
+                cookieStr.setLength(cookieStr.length() - 1);
+            }
+            httpGet.addHeader("Cookie", cookieStr.toString());
+            RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(35000)// 连接主机服务超时时间
+                    .setConnectionRequestTimeout(35000)// 请求超时时间
+                    .setSocketTimeout(60000)// 数据读取超时时间
+                    .build();
+            httpGet.setConfig(requestConfig);
+            response = httpClient.execute(httpGet);
+            HttpEntity entity = response.getEntity();
+            result = EntityUtils.toString(entity);
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (null != response) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (null != httpClient) {
+                try {
+                    httpClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
     }
+
+
+
+
+
+
+
+
+
+    public static String doPostWithCookis(String url,Map<String,String> cookie) {
+        CloseableHttpClient httpClient = null;
+        CloseableHttpResponse response = null;
+        String result = "";
+        try {
+            httpClient = HttpClients.createDefault();
+            HttpPost httpPost = new HttpPost(url);
+            httpPost.setHeader("Authorization", "Bearer da3efcbf-0845-4fe3-8aba-ee040be542c0");
+            StringBuffer cookieStr = new StringBuffer();
+            Iterator<Map.Entry<String,String>> iterator = cookie.entrySet().iterator();
+            while (iterator.hasNext()) {
+                Map.Entry<String,String> next = iterator.next();
+                cookieStr.append(next.getKey()).append("=").append(next.getValue()).append(";");
+            }
+            if(cookieStr.length() > 0) {
+                cookieStr.setLength(cookieStr.length() - 1);
+            }
+            httpPost.addHeader("Cookie", cookieStr.toString());
+            RequestConfig requestConfig = RequestConfig.custom().setConnectTimeout(35000)// 连接主机服务超时时间
+                    .setConnectionRequestTimeout(35000)// 请求超时时间
+                    .setSocketTimeout(60000)// 数据读取超时时间
+                    .build();
+            httpPost.setConfig(requestConfig);
+            response = httpClient.execute(httpPost);
+            HttpEntity entity = response.getEntity();
+            result = EntityUtils.toString(entity);
+        } catch (ClientProtocolException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (null != response) {
+                try {
+                    response.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (null != httpClient) {
+                try {
+                    httpClient.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
