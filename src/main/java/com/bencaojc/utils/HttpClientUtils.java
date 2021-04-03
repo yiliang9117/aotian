@@ -232,7 +232,7 @@ public class HttpClientUtils {
 
 
     /*
-    * 模拟表格上传文件
+    * 模拟表单上传文件
     * */
     public static String formPostUploadFile(String urlStr, Map<String, String> textMap,
                                     Map<String, String> fileMap) {

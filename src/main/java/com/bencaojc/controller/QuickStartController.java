@@ -56,18 +56,27 @@ public class QuickStartController {
 
         String postUrl = "http://172.16.10.246:89/module/importXls/impworkguest_ajax.php";
 
-        HttpClientUtils.uploadFile( excelPath,cookie);
+     //   HttpClientUtils.uploadFile( excelPath,cookie);
 
 
 
-        String postUrlhtml = HttpClientUtils.doPostGetCookie(postUrl,upfilePrams);
+       // String postUrlhtml = HttpClientUtils.doPostGetCookie(postUrl,upfilePrams);
 
 
-        System.out.println("上传文件：" + postUrlhtml);
+//        System.out.println("上传文件：" + postUrlhtml);
 
         
 
         return "springboot 访问成功!"+html;
+    }
+
+
+
+    @RequestMapping("/quick2")
+    public String quick2() {
+
+
+        return "index";
     }
 
 
