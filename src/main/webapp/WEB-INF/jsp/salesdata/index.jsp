@@ -58,7 +58,7 @@
         <div class="loadbox"> <img src="/static/images/loading.gif"> 页面加载中... </div>
     </div>
     <div class="head">
-        <h1><img src="/static/images/logo.png">本草极萃销售实时数据</h1>
+        <h1><img src="/static/images/logo.png">本草极萃销售作战大屏</h1>
         <div class="weather"><img src="/static/images/weather.png">
 				<span id="localtime1" style=" color: #ffeb7b; font-size:24px; right: 30px; top:-20px; "></span>
 		</div>
@@ -77,8 +77,8 @@
                         </ul>
                         <div style="border-bottom: 1px solid rgba(255,255,255,.1)"></div>
                         <ul class="clearfix">
-                            <li><h2>1824</h2><span>今日销售额</span></li>
-                            <li><h2>1920</h2><span>昨日销售额</span></li>
+                            <li><h2>1824</h2><span>本月销售额</span></li>
+                            <li><h2>1920</h2><span>上月销售额</span></li>
                             <li><h2>19%</h2><span>环比增长</span></li>
                         </ul>
 
@@ -103,14 +103,14 @@
                 <div class="bar">
                     <div class="barbox">
                         <ul class="clearfix">
-                            <li class="pulll_left counter">12581189</li>
-                            <li class="pulll_left counter">3912410</li>
+                            <li class="pulll_left counter">128600</li>
+                            <li class="pulll_left counter">101320</li>
                         </ul>
                     </div>
                     <div class="barbox2">
                         <ul class="clearfix">
-                            <li class="pulll_left">消费总金额</li>
-                            <li class="pulll_left">消费总笔数</li>
+                            <li class="pulll_left">A1区本月成交金额</li>
+                            <li class="pulll_left">二部本月成交金额</li>
                         </ul>
                     </div>
                 </div>
@@ -121,7 +121,9 @@
                     <div class="map1"><img src="/static/images/lbx.png"></div>
                     <div class="map2"><img src="/static/images/jt.png"></div>
                     <div class="map3"><img src="/static/images/map.png"></div>
-				<span id="localtime" style=" color: #ffeb7b; font-size:60px; right: 30px; top:-20px; "></span>
+
+				    <span id="localtime" style=" color: #ffeb7b; font-size:60px; right: 30px; top:-20px; "></span>
+
                     <div class="map4" id="map_1"></div>
 					
 					
@@ -130,7 +132,7 @@
             </li>
             <li>
                 <div class="boxall" style="height:5.2rem">
-                    <div class="alltitle">新增会员信息</div>
+                    <div class="alltitle">新增订单信息</div>
                     <div class="tabs">
                         <ul class="clearfix">
                             <li><a class="active" href="#">7天</a></li>
@@ -144,13 +146,13 @@
                         <div class="sy" id="echarts8"></div>
                     </div>
                     <div class="addnew">
-                        <div class="tit02"><span>今日新增会员列表</span></div>
+                        <div class="tit02"><span>今日新增订单列表</span></div>
                         <div class="adduser">
                             <ul class="clearfix">
-                                <li class="clearfix"> <span class="pulll_left"><img src="/static/images/head.jpg">1今日新增会员列表</span> <span class="pulll_right">24岁 - 女 - 广州 </span> </li>
-                                <li class="clearfix"> <span class="pulll_left"><img src="/static/images/head.jpg">2今日新增会员列表</span> <span class="pulll_right">24岁 - 女 - 广州 </span> </li>
-                                <li class="clearfix"> <span class="pulll_left"><img src="/static/images/head.jpg">3今日新增会员列表</span> <span class="pulll_right">24岁 - 女 - 广州 </span> </li>
-                                <li class="clearfix"> <span class="pulll_left"><img src="/static/images/head.jpg">4今日新增会员列表</span> <span class="pulll_right">24岁 - 女 - 广州 </span> </li>
+                                <li class="clearfix"> <span class="pulll_left"><img src="/static/images/head.jpg">1今日新增订单列表</span> <span class="pulll_right" style="padding-right: 52px;">24岁 - 女 - 广州 </span> </li>
+                                <li class="clearfix"> <span class="pulll_left"><img src="/static/images/head.jpg">2今日新增订单列表</span> <span class="pulll_right" style="padding-right: 52px;">24岁 - 女 - 广州 </span> </li>
+                                <li class="clearfix"> <span class="pulll_left"><img src="/static/images/head.jpg">3今日新增订单列表</span> <span class="pulll_right" style="padding-right: 52px;">24岁 - 女 - 广州 </span> </li>
+                                <li class="clearfix"> <span class="pulll_left"><img src="/static/images/head.jpg">4今日新增订单列表</span> <span class="pulll_right" style="padding-right: 52px;">24岁 - 女 - 广州 </span> </li>
                             </ul>
                         </div>
                     </div>
@@ -161,22 +163,22 @@
                     <div class="wrap">
                         <ul>
                             <li>
-                                <p>1李东梁-支付宝支付-120元-XXX门店</p>
+                                <p>1李东梁-支付宝支付-6980元-极萃机三代1台</p>
                             </li>
                             <li>
-                                <p>2李东梁-支付宝支付-120元-XXX门店</p>
+                                <p>2李东梁-支付宝支付-6980元-极萃机三代1台</p>
                             </li>
                             <li>
-                                <p>3李东梁-支付宝支付-120元-XXX门店</p>
+                                <p>3李东梁-支付宝支付-6980元-极萃机三代1台</p>
                             </li>
                             <li>
-                                <p>4李东梁-支付宝支付-120元-XXX门店</p>
+                                <p>4李东梁-支付宝支付-6980元-极萃机三代1台</p>
                             </li>
                             <li>
-                                <p>5李东梁-支付宝支付-120元-XXX门店</p>
+                                <p>5李东梁-支付宝支付-6980元-极萃机三代1台</p>
                             </li>
                             <li>
-                                <p>6李东梁-支付宝支付-120元-XXX门店</p>
+                                <p>6李东梁-支付宝支付-6980元-极萃机三代1台</p>
                             </li>
                         </ul>
                     </div>
@@ -700,7 +702,7 @@
 	if  (ww==6)  ww="星期六";
 	colorfoot="</font>"
 	//str = colorhead + yy + "-" + MM + "-" + dd + " " + hh + ":" + mm + ":" + ss + "  " + ww + colorfoot;
-	str = colorhead +  " " + hh + ":" + mm + ":" + ss + ":"  + ms + " " +  ww + colorfoot;
+	str = colorhead +  " " + hh + ":" + mm + ":" + ss  + " " +  ww + colorfoot;
 	return(str);
 }
 
