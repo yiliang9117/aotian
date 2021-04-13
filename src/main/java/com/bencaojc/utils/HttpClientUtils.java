@@ -161,7 +161,7 @@ public class HttpClientUtils {
         HttpPost postMethod = buildHttpPost(url, params, utf8);
 
         HttpResponse response = client.execute(postMethod);
-        System.out.println(545);
+        System.out.println(response.toString());
         Header[] responseHeader = response.getHeaders("Set-Cookie");
         int length = responseHeader.length;
         StringBuilder stringBuilder = new StringBuilder();
@@ -183,6 +183,7 @@ public class HttpClientUtils {
         EntityUtils.toString(entity, utf8);
 
         if (entity != null) {
+
             return stringBuilder.toString();
         }
 

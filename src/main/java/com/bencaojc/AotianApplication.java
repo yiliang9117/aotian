@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AotianApplication {
 
 	public static void main(String[] args) {
+
+
 		SpringApplication.run(AotianApplication.class, args);
 
 	}

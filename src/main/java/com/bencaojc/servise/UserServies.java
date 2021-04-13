@@ -20,20 +20,22 @@ public class UserServies {
 
 
 
-
-//        String post = httpClientUtils.post(urlStr ,prams );
-
-
+    /*
+    * 登录并获取初次Cookie
+    *
+    * */
     public String doLogin(String urlStr, Map<String, String> prams) throws IOException, URISyntaxException {
       String cookie = HttpClientUtils.doPostGetCookie(urlStr ,prams );
       if (null != cookie)
          return cookie;
       else return null;
-
-
     }
 
 
+    /*
+    * 携带Cookie用get访问页面
+    *
+    * */
     public String toPageWiteCookie(String mainUrl, String cookieStr) {
 
         Map<String,String> cookie = new HashMap<>();
