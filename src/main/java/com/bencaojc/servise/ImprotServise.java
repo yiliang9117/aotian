@@ -1,5 +1,7 @@
 package com.bencaojc.servise;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,6 +12,8 @@ import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @Service
 public class ImprotServise {
@@ -24,41 +28,65 @@ public class ImprotServise {
     @Value("${aotian.importXls.istest}")
     private String istest;
 
+    @Value("${aotian.importXls.guesturl}")
+    String importXlsGuesturl;
 
 
 
-
-
-
-
-
-
-
-    public String importXls(String filepath) throws IOException {
+    public Map<String, String> importXls(String filepath) throws IOException {
 
         String replace = filepath.replace("\\", "/");
-
         String urlStr = basePath + importXlsUrl+istest;
-
-        /*String excelPath = "D:\\soft\\develop\\aotian\\src\\main\\resources\\13\\16.xls";
-        String cookieStr = "sqs_session=Am1XNVVjVDdSMlRiUzUEPV5iXTlRZlBgDWBUMwZjUTNQZ1dgUGMCMlZlUDBXNwA4CGMAZFJkXTpUalRnAzYFZg%3D%3D";
-        String filepath="D:\\soft\\develop\\aotian\\src\\main\\resources\\13\\16.xls";
-        String urlStr = "http://172.16.10.246:89/module/importXls/impworkguest_ajax.php?action=upfile&elid=file_add&istest=1";*/
         System.out.println("urlStr" + urlStr);
+        System.out.println("filepath:"+filepath);
+
+//        表格去重
 
 
+
+
+
+//        给傲天上传表格
         Map<String, String> textMap = new HashMap<String, String>();
         textMap.put("name", "testname");
         Map<String, String> fileMap = new HashMap<String, String>();
         fileMap.put("file_add", replace);
-        //fileMap.put("istest", "1");
-
         String ret = formUpload(urlStr, textMap, fileMap);
 
+//        第二次伪上传   获取重复线索
+        Map<String, String> textMap2 = new HashMap<String, String>();
+        textMap2.put("action", "handle");
+        textMap2.put("page","1");
+        textMap2.put("psize","10");
+        textMap2.put("istest",istest+"");
+        textMap2.put("file_name",ret.replace("\n",""));
+        //      textMap2.put("file_name","20210414141628");
+        Map<String, String> fileMap2 = new HashMap<String, String>();
+        String s = this.formUpload(basePath + importXlsGuesturl, textMap2, fileMap2);
+        String JsonStr = String.valueOf(JSON.parse(s));
 
 
-        return ret;
+//      清洗重线
+        Map<String, String> repeatPhones = this.getRepeatPhones(JsonStr);
+        return repeatPhones;
     }
+
+
+
+    public Map<String, String> getRepeatPhones(String jsonStr){
+        Map<String, String> repeatPhones = new HashMap<>();
+        Pattern allStrP =Pattern.compile("(【.*?】)");
+        Matcher allStrM=allStrP.matcher(jsonStr);
+        while(allStrM.find()) {
+            String allStr = allStrM.group();
+            String replace = allStr.replace("【 ", "").replace(" 】", "");
+            String[] split = replace.split("--");
+            repeatPhones.put(split[0],split[1]);
+        }
+        return repeatPhones;
+    }
+
+
 
 
 
@@ -68,7 +96,7 @@ public class ImprotServise {
     /*
     * 模拟表格上传文件
     * */
-    public static String formUpload(String urlStr, Map<String, String> textMap,
+    public String formUpload(String urlStr, Map<String, String> textMap,
                                     Map<String, String> fileMap) {
         String res = "";
         HttpURLConnection conn = null;
@@ -164,6 +192,7 @@ public class ImprotServise {
                 conn = null;
             }
         }
+        System.out.println(res);
         return res;
     }
 

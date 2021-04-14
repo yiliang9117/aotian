@@ -52,8 +52,6 @@ public class Demo5 {
     * 根据所需个数返回前面的电话列表
     * */
     public List<ImprotTelephoneNumber>  getHeadPhoneByNumber(int number,List<ImprotTelephoneNumber> phoneNumbers) {
-
-
         int getNumber = 0;
         int size = phoneNumbers.size();
 
@@ -74,14 +72,6 @@ public class Demo5 {
         System.out.println("今日电话列表："+tempLists);
         return tempLists;
     }
-
-
-
-
-
-
-
-
 
     /*
     * 将电话对象list列表写成表格
@@ -114,12 +104,9 @@ public class Demo5 {
     * */
     public  List<ImprotTelephoneNumber>  removeDuplicationPhoneNumber(List<ImprotTelephoneNumber> allList) {
 
-        System.out.println("正在电话去重…………");
-
-
+        System.out.println("正在读取Excel文件……");
         List<ImprotTelephoneNumber> tempLists = new LinkedList<>();
         Set<String> tempPhoneSet = new HashSet<>();
-
         for (int i = 0; i < allList.size(); i++) {
             ImprotTelephoneNumber phoneNumber = allList.get(i);
             String phoneNumber1 = phoneNumber.getPhoneNumber();
@@ -127,18 +114,11 @@ public class Demo5 {
             if (add){
                 phoneNumber.setComeinAccount("今日头条");
                 phoneNumber.setOwnersname("本草极萃机三代");
-
                 tempLists.add(phoneNumber);
             }
         }
-
-        System.out.println("总共导入："+allList.size()+"个,去重："+(allList.size()-tempLists.size()) + "个,新线索："+tempLists.size()+"个");
         return tempLists;
     }
-
-
-
-
 
     /*
     * 读取电话列表
@@ -203,6 +183,8 @@ public class Demo5 {
         }
         return null;
     }
+
+
 
 
 

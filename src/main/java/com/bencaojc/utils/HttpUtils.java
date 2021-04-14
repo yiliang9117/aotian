@@ -115,6 +115,59 @@ public class HttpUtils {
     }*/
 
 
+    public String doPost2(String url , Map<String,Object>  paramMap){
+        //创建httpClient对象
+        CloseableHttpClient httpClient = HttpClients.createDefault();
+        CloseableHttpResponse response = null;
+        String result = "";
+        try{
+            //创建http请求
+            HttpPost httpPost = new HttpPost(url);
+            httpPost.addHeader("Content-Type", "application/json");
+            //创建请求内容
+            String jsonStr = "{\"qry_by\":\"name\", \"name\":\"Tim\"}";
+
+
+            JSONObject param = new JSONObject(paramMap);//添加参数 接口要求post参数的格式是json格式
+
+
+            StringEntity entity = new StringEntity(param.toString());
+            httpPost.setEntity(entity);
+            response = httpClient.execute(httpPost);
+            result = EntityUtils.toString(response.getEntity(),"utf-8");
+            System.out.println(result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }finally {
+            //关闭资源
+            if(response != null){
+                try {
+                    response.close();
+                }catch (IOException ioe){
+                    ioe.printStackTrace();
+                }
+            }
+            if(httpClient != null){
+                try{
+                    httpClient.close();
+                }catch (IOException ioe){
+                    ioe.printStackTrace();
+                }
+            }
+        }
+        return result;
+    }
+
+
+
+
+
+
+
+
+
+
+
 
     public static String doGetWithCookis(String url,Map<String,String> cookie) {
         CloseableHttpClient httpClient = null;
@@ -207,7 +260,7 @@ public class HttpUtils {
 
 
             httpPost.setHeader("Content-Encoding", "gzip"); //设置请求信息,设置header
-            httpPost.setHeader("Content-Type", "text/html"); //设置请求信息,设置header
+            httpPost.setHeader("Content-Type", "multipart/form-data"); //设置请求信息,设置header
             httpPost.setHeader("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.190 Safari/537.36"); //设置请求信息,设置header
 
 
@@ -247,6 +300,112 @@ public class HttpUtils {
         return result;
     }
 
+
+
+
+
+
+    /*
+    * 模拟表格上传文件
+    * */
+    public static String formUpload(String urlStr, Map<String, String> textMap,
+                                    Map<String, String> fileMap) {
+        String res = "";
+        HttpURLConnection conn = null;
+        String BOUNDARY = "---------------------------123821742118716"; //boundary就是request头和上传文件内容的分隔符
+        try {
+            URL url = new URL(urlStr);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setConnectTimeout(5000);
+            conn.setReadTimeout(30000);
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setUseCaches(false);
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Connection", "Keep-Alive");
+            conn
+                    .setRequestProperty("User-Agent",
+                            "Mozilla/5.0 (Windows; U; Windows NT 6.1; zh-CN; rv:1.9.2.6)");
+            conn.setRequestProperty("Content-Type",
+                    "multipart/form-data; boundary=" + BOUNDARY);
+            OutputStream out = new DataOutputStream(conn.getOutputStream());
+            // text
+            if (textMap != null) {
+                StringBuffer strBuf = new StringBuffer();
+                Iterator iter = textMap.entrySet().iterator();
+                while (iter.hasNext()) {
+                    Map.Entry entry = (Map.Entry) iter.next();
+                    String inputName = (String) entry.getKey();
+                    String inputValue = (String) entry.getValue();
+                    if (inputValue == null) {
+                        continue;
+                    }
+                    strBuf.append("\r\n").append("--").append(BOUNDARY).append(
+                            "\r\n");
+                    strBuf.append("Content-Disposition: form-data; name=\""
+                            + inputName + "\"\r\n\r\n");
+                    strBuf.append(inputValue);
+                }
+                out.write(strBuf.toString().getBytes());
+            }
+            // file
+            if (fileMap != null) {
+                Iterator iter = fileMap.entrySet().iterator();
+                while (iter.hasNext()) {
+                    Map.Entry entry = (Map.Entry) iter.next();
+                    String inputName = (String) entry.getKey();
+                    String inputValue = (String) entry.getValue();
+                    if (inputValue == null) {
+                        continue;
+                    }
+                    File file = new File(inputValue);
+                    String filename = file.getName();
+
+                    StringBuffer strBuf = new StringBuffer();
+                    strBuf.append("\r\n").append("--").append(BOUNDARY).append(
+                            "\r\n");
+                    strBuf.append("Content-Disposition: form-data; name=\""
+                            + inputName + "\"; filename=\"" + filename
+                            + "\"\r\n");
+//                    strBuf.append("Content-Type:" + contentType + "\r\n\r\n");
+                    strBuf.append("Content-Type:" + "multipart/form-data; boundary=----WebKitFormBoundary" + "\r\n\r\n");
+                    out.write(strBuf.toString().getBytes());
+                    DataInputStream in = new DataInputStream(
+                            new FileInputStream(file));
+                    int bytes = 0;
+                    byte[] bufferOut = new byte[1024];
+                    while ((bytes = in.read(bufferOut)) != -1) {
+                        out.write(bufferOut, 0, bytes);
+                    }
+                    in.close();
+                }
+            }
+            byte[] endData = ("\r\n--" + BOUNDARY + "--\r\n").getBytes();
+            out.write(endData);
+            out.flush();
+            out.close();
+            // 读取返回数据
+            StringBuffer strBuf = new StringBuffer();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(
+                    conn.getInputStream()));
+            String line = null;
+            while ((line = reader.readLine()) != null) {
+                strBuf.append(line).append("\n");
+            }
+            res = strBuf.toString();
+            reader.close();
+            reader = null;
+        } catch (Exception e) {
+            System.out.println("发送POST请求出错。" + urlStr);
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.disconnect();
+                conn = null;
+            }
+        }
+        return res;
+    }
 
 
 
