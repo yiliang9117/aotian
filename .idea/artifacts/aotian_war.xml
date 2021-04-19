@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="aotian:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="aotian.war">
+      <element id="artifact" artifact-name="aotian:war exploded" />
+    </root>
+  </artifact>
+</component>

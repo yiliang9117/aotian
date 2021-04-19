@@ -37,9 +37,6 @@ public class ImportController {
     String cookiestr;
 
 
-//    String newExcelPath = "D:\\soft\\develop\\aotian\\src\\main\\resources\\13\\";
-
-
 
     @Autowired
     ImprotServise improtServise;
@@ -77,10 +74,7 @@ public class ImportController {
         List<ImprotTelephoneNumber> improtTelephoneNumbers = excelUtils.removeDuplicationPhoneNumber(phoneNumberListFromExcel);
         String list2ExcelPath = excelUtils.list2Excel(fileUploadPath, improtTelephoneNumbers);
 
-
-
         Map<String, String> repeatPhones = improtServise.importXls(list2ExcelPath);
-
 
         ModelAndView modelAndView = new ModelAndView("upload/importXls");
 
@@ -92,9 +86,10 @@ public class ImportController {
         modelAndView.addObject("repeatPhoneSise" , phoneNumberListFromExcel.size()-improtTelephoneNumbers.size());
         System.out.println(repeatPhones);
 
+//TODO        创建实体类，用对象的方式，将数据显示在前端
+
 
         return modelAndView;
-
     }
 
 }

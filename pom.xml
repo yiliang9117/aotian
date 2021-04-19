@@ -12,8 +12,12 @@
 	<artifactId>aotian</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>aotian</name>
-	<description>Demo project for Spring Boot</description>
-	<properties>
+	<description>傲天系统增强</description>
+
+    <!-- 这里设置打包的形式  默认为jar -->
+    <packaging>war</packaging>
+
+    <properties>
 		<java.version>9.0.1</java.version>
 
 		<ali.core.version>4.1.1</ali.core.version>
@@ -56,15 +60,41 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.3.1</version>
 		</dependency>
-		<dependency>
+	<!--	<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
 			<version>2.3</version>
-		</dependency>
+		</dependency>-->
+
+
+       <!-- <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+        </dependency>-->
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!-- 移除嵌入式tomcat插件 -->
+            <exclusions>
+                <exclusion>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-starter-tomcat</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 
 
 
-		<!-- tomcat支持 -->
+
+
+
+        <!-- tomcat支持 -->
 		<dependency>
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
@@ -173,21 +203,9 @@
 			<version>1.4.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 
-		<dependency>
-			<groupId>org.jsoup</groupId>
-			<artifactId>jsoup</artifactId>
-		</dependency>
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-cbor</artifactId>
@@ -240,7 +258,11 @@
 	</dependencies>
 
 	<build>
-		<plugins>
+            <finalName>aotian</finalName>
+
+
+
+        <plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
@@ -258,5 +280,7 @@
 
 
 </build>
+
+
 
 </project>

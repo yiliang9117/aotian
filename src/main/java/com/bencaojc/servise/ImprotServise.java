@@ -2,6 +2,9 @@ package com.bencaojc.servise;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.bencaojc.pojo.ImprotTelephoneNumber;
+import com.bencaojc.utils.ExcelUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -32,6 +36,10 @@ public class ImprotServise {
     String importXlsGuesturl;
 
 
+    @Autowired
+    ExcelUtils excelUtils;
+
+
 
     public Map<String, String> importXls(String filepath) throws IOException {
 
@@ -40,8 +48,10 @@ public class ImprotServise {
         System.out.println("urlStr" + urlStr);
         System.out.println("filepath:"+filepath);
 
-//        表格去重
-
+        //        表格去重
+      /*  List<ImprotTelephoneNumber> phoneNumberListFromExcel = excelUtils.getPhoneNumberListFromExcel(newFilePath);
+        List<ImprotTelephoneNumber> improtTelephoneNumbers = excelUtils.removeDuplicationPhoneNumber(phoneNumberListFromExcel);
+        String list2ExcelPath = excelUtils.list2Excel(fileUploadPath, improtTelephoneNumbers);*/
 
 
 
