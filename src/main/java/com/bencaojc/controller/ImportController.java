@@ -55,6 +55,12 @@ public class ImportController {
         return "upload/upload";
     }
 
+    /*导入线索页面路由*/
+    @RequestMapping("/main")
+    public String toMain(){
+        return "main";
+    }
+
 
 
 

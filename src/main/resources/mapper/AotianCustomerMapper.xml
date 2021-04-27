@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bencaojc.mapper.AotianCustomerMapper">
+  <resultMap id="BaseResultMap" type="com.bencaojc.pojo.AotianCustomer">
+    <result column="aotian_id" jdbcType="CHAR" property="aotianId" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="desc_str" jdbcType="CHAR" property="descStr" />
+    <result column="telephone" jdbcType="CHAR" property="telephone" />
+    <result column="order_num" jdbcType="CHAR" property="orderNum" />
+    <result column="creat_time" jdbcType="TIMESTAMP" property="creatTime" />
+    <result column="customer_service_id" jdbcType="CHAR" property="customerServiceId" />
+    <result column="customer_service" jdbcType="CHAR" property="customerService" />
+    <result column="customer_type" jdbcType="CHAR" property="customerType" />
+    <result column="customer_grade" jdbcType="CHAR" property="customerGrade" />
+    <result column="working_group" jdbcType="CHAR" property="workingGroup" />
+    <result column="remark" jdbcType="CHAR" property="remark" />
+    <result column="province" jdbcType="CHAR" property="province" />
+    <result column="city" jdbcType="CHAR" property="city" />
+    <result column="county" jdbcType="CHAR" property="county" />
+    <result column="detailed_address" jdbcType="CHAR" property="detailedAddress" />
+    <result column="processing_status" jdbcType="CHAR" property="processingStatus" />
+    <result column="allocate_time" jdbcType="TIMESTAMP" property="allocateTime" />
+    <result column="media" jdbcType="CHAR" property="media" />
+    <result column="product" jdbcType="CHAR" property="product" />
+    <result column="media_product" jdbcType="CHAR" property="mediaProduct" />
+    <result column="department" jdbcType="CHAR" property="department" />
+  </resultMap>
+
+  <insert id="insert" parameterType="com.bencaojc.pojo.AotianCustomer">
+    insert into aotian_customer (aotian_id, name, desc_str,
+      telephone, order_num, creat_time,
+      customer_service_id, customer_service, customer_type,
+      customer_grade, working_group, remark,
+      province, city, county,
+      detailed_address, processing_status, allocate_time,
+      media, product, media_product,
+      department)
+    values (#{aotianId,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{descStr,jdbcType=CHAR},
+      #{telephone,jdbcType=CHAR}, #{orderNum,jdbcType=CHAR}, #{creatTime,jdbcType=TIMESTAMP},
+      #{customerServiceId,jdbcType=CHAR}, #{customerService,jdbcType=CHAR}, #{customerType,jdbcType=CHAR},
+      #{customerGrade,jdbcType=CHAR}, #{workingGroup,jdbcType=CHAR}, #{remark,jdbcType=CHAR},
+      #{province,jdbcType=CHAR}, #{city,jdbcType=CHAR}, #{county,jdbcType=CHAR},
+      #{detailedAddress,jdbcType=CHAR}, #{processingStatus,jdbcType=CHAR}, #{allocateTime,jdbcType=TIMESTAMP},
+      #{media,jdbcType=CHAR}, #{product,jdbcType=CHAR}, #{mediaProduct,jdbcType=CHAR},
+      #{department,jdbcType=CHAR})
+  </insert>
+
+
+  <select id="selectCountByCustomerGrade" parameterType="com.bencaojc.dto.AdNameCustomerGradeCount" resultType="com.bencaojc.dto.AdNameCustomerGradeCount">
+
+
+    SELECT
+    feiyu_clue.ad_name advertiserAdName,
+    count(1) countNum
+    FROM
+    aotian_customer,
+    feiyu_clue
+
+    <where>
+
+    aotian_customer.telephone = feiyu_clue.telephone
+
+    AND create_time_detail &gt;=	 '2021-04-01'
+    AND create_time_detail &lt;=	 '2021-04-27'
+
+      <if test="customerGrade!=null">
+
+
+      and customer_grade = #{customerGrade}
+
+
+      </if>
+
+    </where>
+    GROUP BY
+    ad_name
+    ORDER BY
+    COUNT(1) DESC;
+
+
+
+
+
+
+
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
