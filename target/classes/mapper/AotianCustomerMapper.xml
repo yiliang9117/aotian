@@ -47,46 +47,142 @@
 
 
   <select id="selectCountByCustomerGrade" parameterType="com.bencaojc.dto.AdNameCustomerGradeCount" resultType="com.bencaojc.dto.AdNameCustomerGradeCount">
-
-
     SELECT
     feiyu_clue.ad_name advertiserAdName,
     count(1) countNum
     FROM
     aotian_customer,
     feiyu_clue
-
     <where>
-
-    aotian_customer.telephone = feiyu_clue.telephone
-
-    AND create_time_detail &gt;=	 '2021-04-01'
-    AND create_time_detail &lt;=	 '2021-04-27'
-
+      aotian_customer.telephone = feiyu_clue.telephone
+      AND create_time_detail &gt;=	 '2021-04-01'
+      AND create_time_detail &lt;=	 '2021-04-27'
       <if test="customerGrade!=null">
-
-
-      and customer_grade = #{customerGrade}
-
-
+        and customer_grade = #{customerGrade}
       </if>
-
     </where>
     GROUP BY
     ad_name
     ORDER BY
     COUNT(1) DESC;
+  </select>
 
 
-
-
-
-
-
+  <select id="selectCountByAdNameList" parameterType="com.bencaojc.dto.AdNameCustomerGradeCount" resultType="com.bencaojc.dto.AdNameCustomerGradeCount">
+    SELECT
+    advertiser_name_ad_name customerGrade,
+    count(1) countNum
+    FROM
+    aotian_customer,
+    feiyu_clue
+    <where>
+      aotian_customer.telephone = feiyu_clue.telephone
+      AND create_time_detail &gt;=	 '2021-04-01'
+      AND create_time_detail &lt;=	 '2021-04-27'
+      <if test="advertiserAdName!=null">
+        and ad_name = #{advertiserAdName}
+      </if>
+    </where>
+    GROUP BY
+    advertiser_name_ad_name
+    ORDER BY
+    COUNT(1) DESC;
   </select>
 
 
 
+  <select id="selectAdNameListAndCount" parameterType="com.bencaojc.dto.AdNameCustomerGradeCount" resultType="com.bencaojc.dto.AdNameCustomerGradeCount">
+    SELECT
+    advertiser_name_ad_name advertiserAdName,
+    count(1) countNum
+    FROM
+    aotian_customer,
+    feiyu_clue
+    <where>
+      aotian_customer.telephone = feiyu_clue.telephone
+      AND create_time_detail &gt;=	 '2021-04-01'
+      AND create_time_detail &lt;=	 '2021-04-27'
+      <if test="advertiserAdName!=null">
+        and ad_name = #{advertiserAdName}
+      </if>
+    </where>
+    GROUP BY
+    advertiser_name_ad_name
+    ORDER BY
+    COUNT(1) DESC;
+  </select>
+
+
+
+
+  <select id="selectAllGrade" parameterType="com.bencaojc.dto.AdNameCustomerGradeCount" resultType="com.bencaojc.dto.AdNameCustomerGradeCount">
+    SELECT
+    customer_grade customerGrade,
+    count(1) countNum
+    FROM
+    aotian_customer,
+    feiyu_clue
+    <where>
+      aotian_customer.telephone = feiyu_clue.telephone
+      AND create_time_detail &gt;=	 '2021-04-01'
+      AND create_time_detail &lt;=	 '2021-04-27'
+    </where>
+    GROUP BY
+    customer_grade
+    ORDER BY
+    customer_grade;
+  </select>
+
+
+
+
+  <select id="selectAdCountByGrade" parameterType="com.bencaojc.dto.AdNameCustomerGradeCount" resultType="com.bencaojc.dto.AdNameCustomerGradeCount">
+    SELECT
+    advertiser_name_ad_name advertiserAdName,
+    count(1) countNum
+    FROM
+    aotian_customer,
+    feiyu_clue
+    <where>
+      aotian_customer.telephone = feiyu_clue.telephone
+      AND create_time_detail &gt;=	 '2021-04-01'
+      AND create_time_detail &lt;=	 '2021-04-27'
+
+      <if test="customerGrade!=null">
+        and customer_grade = #{customerGrade}
+      </if>
+    </where>
+    GROUP BY
+    advertiser_name_ad_name
+    ORDER BY
+    COUNT(1) DESC;
+  </select>
+
+
+
+  <select id="selectAdCountByGradeToTable" parameterType="com.bencaojc.dto.AdNameCustomerGradeCount" resultType="com.bencaojc.dto.AdCountTableData">
+    select feiyu_clue.advertiser_name_ad_name advertiserNameAdName ,
+    count(1) clueSum,
+    sum(case   when customer_grade =  'A级客户' then 1 else 0 end ) aClue,
+    sum(case   when customer_grade =  'B级客户' then 1 else 0 end ) bClue,
+    sum(case   when customer_grade =  'C级客户' then 1 else 0 end ) cClue,
+    sum(case   when customer_grade =  'D级客户' then 1 else 0 end ) dClue,
+    sum(case   when customer_grade =  'E级客户' then 1 else 0 end ) eClue,
+    sum(case   when customer_grade =  '无' then 1 else 0 end ) nullClue
+    from
+    aotian_customer   join
+    feiyu_clue
+    on  aotian_customer.telephone = feiyu_clue.telephone
+
+    <where>
+      AND create_time_detail &gt;=	 '2021-04-01'
+      AND create_time_detail &lt;=	 '2021-04-27'
+    </where>
+
+    GROUP BY
+    advertiser_name_ad_name
+    ORDER BY  aClue desc
+  </select>
 
 
 

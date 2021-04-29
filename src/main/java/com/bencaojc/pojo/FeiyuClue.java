@@ -95,6 +95,60 @@ public class FeiyuClue implements Serializable {
 
     private String storePackRemark;
 
+    private String advertiserNameAdName;
+
+    @Override
+    public String toString() {
+        return "FeiyuClue{" +
+                "clueId='" + clueId + '\'' +
+                ", advertiserId='" + advertiserId + '\'' +
+                ", advertiserName='" + advertiserName + '\'' +
+                ", adId='" + adId + '\'' +
+                ", adName='" + adName + '\'' +
+                ", siteId='" + siteId + '\'' +
+                ", externalUrl='" + externalUrl + '\'' +
+                ", clueType='" + clueType + '\'' +
+                ", moduleName='" + moduleName + '\'' +
+                ", moduleId='" + moduleId + '\'' +
+                ", createTime=" + createTime +
+                ", createTimeDetail=" + createTimeDetail +
+                ", date=" + date +
+                ", clueSource='" + clueSource + '\'' +
+                ", name='" + name + '\'' +
+                ", telephone='" + telephone + '\'' +
+                ", gender='" + gender + '\'' +
+                ", age='" + age + '\'' +
+                ", email='" + email + '\'' +
+                ", weixin='" + weixin + '\'' +
+                ", qq='" + qq + '\'' +
+                ", provinceName='" + provinceName + '\'' +
+                ", cityName='" + cityName + '\'' +
+                ", address='" + address + '\'' +
+                ", location='" + location + '\'' +
+                ", remark='" + remark + '\'' +
+                ", remarkDict='" + remarkDict + '\'' +
+                ", formRemark='" + formRemark + '\'' +
+                ", appName='" + appName + '\'' +
+                ", convertStatus='" + convertStatus + '\'' +
+                ", reqId='" + reqId + '\'' +
+                ", clueState='" + clueState + '\'' +
+                ", clueStateName='" + clueStateName + '\'' +
+                ", clueOwnerName='" + clueOwnerName + '\'' +
+                ", followStateName='" + followStateName + '\'' +
+                ", countryName='" + countryName + '\'' +
+                ", systemTags='" + systemTags + '\'' +
+                ", storeId='" + storeId + '\'' +
+                ", storeName='" + storeName + '\'' +
+                ", storePackId='" + storePackId + '\'' +
+                ", storePackName='" + storePackName + '\'' +
+                ", storeLocation='" + storeLocation + '\'' +
+                ", storeAddress='" + storeAddress + '\'' +
+                ", storeRemark='" + storeRemark + '\'' +
+                ", storePackRemark='" + storePackRemark + '\'' +
+                ", advertiserNameAdName='" + advertiserNameAdName + '\'' +
+                '}';
+    }
+
     public String getClueId() {
         return clueId;
     }
@@ -455,54 +509,11 @@ public class FeiyuClue implements Serializable {
         this.storePackRemark = storePackRemark;
     }
 
-    @Override
-    public String toString() {
-        return "FeiyuClue{" +
-                "clueId='" + clueId + '\'' +
-                ", advertiserId='" + advertiserId + '\'' +
-                ", advertiserName='" + advertiserName + '\'' +
-                ", adId='" + adId + '\'' +
-                ", adName='" + adName + '\'' +
-                ", siteId='" + siteId + '\'' +
-                ", externalUrl='" + externalUrl + '\'' +
-                ", clueType='" + clueType + '\'' +
-                ", moduleName='" + moduleName + '\'' +
-                ", moduleId='" + moduleId + '\'' +
-                ", createTime=" + createTime +
-                ", createTimeDetail=" + createTimeDetail +
-                ", date=" + date +
-                ", clueSource='" + clueSource + '\'' +
-                ", name='" + name + '\'' +
-                ", telephone='" + telephone + '\'' +
-                ", gender='" + gender + '\'' +
-                ", age='" + age + '\'' +
-                ", email='" + email + '\'' +
-                ", weixin='" + weixin + '\'' +
-                ", qq='" + qq + '\'' +
-                ", provinceName='" + provinceName + '\'' +
-                ", cityName='" + cityName + '\'' +
-                ", address='" + address + '\'' +
-                ", location='" + location + '\'' +
-                ", remark='" + remark + '\'' +
-                ", remarkDict='" + remarkDict + '\'' +
-                ", formRemark='" + formRemark + '\'' +
-                ", appName='" + appName + '\'' +
-                ", convertStatus='" + convertStatus + '\'' +
-                ", reqId='" + reqId + '\'' +
-                ", clueState='" + clueState + '\'' +
-                ", clueStateName='" + clueStateName + '\'' +
-                ", clueOwnerName='" + clueOwnerName + '\'' +
-                ", followStateName='" + followStateName + '\'' +
-                ", countryName='" + countryName + '\'' +
-                ", systemTags='" + systemTags + '\'' +
-                ", storeId='" + storeId + '\'' +
-                ", storeName='" + storeName + '\'' +
-                ", storePackId='" + storePackId + '\'' +
-                ", storePackName='" + storePackName + '\'' +
-                ", storeLocation='" + storeLocation + '\'' +
-                ", storeAddress='" + storeAddress + '\'' +
-                ", storeRemark='" + storeRemark + '\'' +
-                ", storePackRemark='" + storePackRemark + '\'' +
-                '}';
+    public String getAdvertiserNameAdName() {
+        return advertiserNameAdName;
+    }
+
+    public void setAdvertiserNameAdName(String advertiserNameAdName) {
+        this.advertiserNameAdName = advertiserNameAdName;
     }
 }

@@ -47,18 +47,8 @@
     <result column="store_address" jdbcType="CHAR" property="storeAddress" />
     <result column="store_remark" jdbcType="CHAR" property="storeRemark" />
     <result column="store_pack_remark" jdbcType="CHAR" property="storePackRemark" />
+    <result column="advertiser_name_ad_name" jdbcType="CHAR" property="advertiserNameAdName" />
   </resultMap>
-  <sql id="Base_Column_List">
-    clue_id, advertiser_id, advertiser_name, ad_id, ad_name, site_id, external_url, clue_type, 
-    module_name, module_id, create_time, create_time_detail, date, clue_source, name, 
-    telephone, gender, age, email, weixin, qq, province_name, city_name, address, location, 
-    remark, remark_dict, form_remark, app_name, convert_status, req_id, clue_state, clue_state_name, 
-    clue_owner_name, follow_state_name, country_name, system_tags, store_id, store_name, 
-    store_pack_id, store_pack_name, store_location, store_address, store_remark, store_pack_remark
-  </sql>
-
-
-
 
 
 
@@ -84,7 +74,8 @@
       clue_owner_name, follow_state_name, country_name, 
       system_tags, store_id, store_name, 
       store_pack_id, store_pack_name, store_location, 
-      store_address, store_remark, store_pack_remark
+      store_address, store_remark, store_pack_remark,
+      advertiser_name_ad_name
       )
     values (#{clueId,jdbcType=CHAR}, #{advertiserId,jdbcType=CHAR}, #{advertiserName,jdbcType=CHAR}, 
       #{adId,jdbcType=CHAR}, #{adName,jdbcType=CHAR}, #{siteId,jdbcType=CHAR}, #{externalUrl,jdbcType=CHAR}, 
@@ -99,7 +90,8 @@
       #{clueOwnerName,jdbcType=CHAR}, #{followStateName,jdbcType=CHAR}, #{countryName,jdbcType=CHAR}, 
       #{systemTags,jdbcType=CHAR}, #{storeId,jdbcType=CHAR}, #{storeName,jdbcType=CHAR}, 
       #{storePackId,jdbcType=CHAR}, #{storePackName,jdbcType=CHAR}, #{storeLocation,jdbcType=CHAR}, 
-      #{storeAddress,jdbcType=CHAR}, #{storeRemark,jdbcType=CHAR}, #{storePackRemark,jdbcType=CHAR}
+      #{storeAddress,jdbcType=CHAR}, #{storeRemark,jdbcType=CHAR}, #{storePackRemark,jdbcType=CHAR},
+      #{advertiserNameAdName,jdbcType=CHAR}
       )
   </insert>
 </mapper>

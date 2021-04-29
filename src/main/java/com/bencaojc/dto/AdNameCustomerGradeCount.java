@@ -8,10 +8,19 @@ public class AdNameCustomerGradeCount {
 
     @Override
     public String toString() {
-        return "CustomerGradeCount{" +
-                "advertiserAdName='" + advertiserAdName + '\'' +
+        return "AdNameCustomerGradeCount{" +
+                "customerGrade='" + customerGrade + '\'' +
+                ", advertiserAdName='" + advertiserAdName + '\'' +
                 ", countNum=" + countNum +
                 '}';
+    }
+
+    public String getCustomerGrade() {
+        return customerGrade;
+    }
+
+    public void setCustomerGrade(String customerGrade) {
+        this.customerGrade = customerGrade;
     }
 
     public String getAdvertiserAdName() {
@@ -28,13 +37,5 @@ public class AdNameCustomerGradeCount {
 
     public void setCountNum(int countNum) {
         this.countNum = countNum;
-    }
-
-    public String getCustomerGrade() {
-        return customerGrade;
-    }
-
-    public void setCustomerGrade(String customerGrade) {
-        this.customerGrade = customerGrade;
     }
 }

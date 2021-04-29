@@ -2,23 +2,27 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="80bb0b00-80e1-4b15-91f5-956155367a2e" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/aotian_war.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/aotian_war.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/aotian_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/aotian_war_exploded.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/aotian.iml" beforeDir="false" afterPath="$PROJECT_DIR$/aotian.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/controller/ImportController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/controller/ImportController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/13/16.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bencaojc/aotian/Demo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/bencaojc/aotian/Demo3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/13/16.xls" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/controller/ImportController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/controller/ImportController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/servise/ImprotServise.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/servise/ImprotServise.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/bencaojc/aotian/Demo3.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/com/bencaojc/aotian/Demo3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/WEB-INF/jsp/index.jsp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/controller/AdController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/controller/AdController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/dto/AdNameCustomerGradeCount.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/dto/AdNameCustomerGradeCount.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/mapper/AotianCustomerMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/mapper/AotianCustomerMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/pojo/AotianCustomer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/pojo/AotianCustomer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/pojo/FeiyuClue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/pojo/FeiyuClue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/servise/AdQualityService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/servise/AdQualityService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/servise/AotianCustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/servise/AotianCustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/bencaojc/servise/FeiyuClueServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/bencaojc/servise/FeiyuClueServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/AotianCustomerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/AotianCustomerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FeiyuClueMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FeiyuClueMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/controller/AdController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/controller/AdController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/dto/AdNameCustomerGradeCount.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/dto/AdNameCustomerGradeCount.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/mapper/AotianCustomerMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/mapper/AotianCustomerMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/pojo/AotianCustomer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/pojo/AotianCustomer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/pojo/FeiyuClue.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/pojo/FeiyuClue.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/servise/AdQualityService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/servise/AdQualityService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/servise/AotianCustomerService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/servise/AotianCustomerService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/bencaojc/servise/FeiyuClueServer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/bencaojc/servise/FeiyuClueServer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/AotianCustomerMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/AotianCustomerMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/FeiyuClueMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/FeiyuClueMapper.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,9 +35,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -49,6 +53,9 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="MyBatisLogPluginparameters" value="Parameters:" />
+    <property name="MyBatisLogPluginpreparing" value="Preparing:" />
+    <property name="MyBatisLogPluginrunning" value="true" />
     <property name="RequestMappingsPanelOrder0" value="0" />
     <property name="RequestMappingsPanelOrder1" value="1" />
     <property name="RequestMappingsPanelOrder2" value="2" />
@@ -59,28 +66,32 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/main/java/com/bencaojc" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/jsp/aotiancustroller" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/static" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="two.files.diff.last.used.folder" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="com.bencaojc.utils.excel" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\soft\develop\aotian\src\main\resources\static\css" />
+      <recent name="D:\soft\develop\aotian\src\main\resources\mapper" />
+      <recent name="D:\soft\develop\aotian\src\main\webapp\WEB-INF\jsp\upload" />
+      <recent name="D:\soft\develop\aotian\src\main\resources\static" />
+      <recent name="D:\soft\develop\aotian\src\main\webapp\WEB-INF\jsp" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.bencaojc" />
       <recent name="com.bencaojc.aotian" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\soft\develop\aotian\src\main\resources\static" />
       <recent name="D:\soft\develop\aotian\src\main\webapp\WEB-INF\jsp\aotiancustroller" />
       <recent name="D:\soft\develop\aotian\src\main\webapp\WEB-INF\jsp" />
       <recent name="D:\soft\develop\aotian\src\main\resources\mapper" />
       <recent name="D:\soft\develop\aotian\src\main\webapp\WEB-INF\jsp\feiyu" />
-      <recent name="D:\soft\develop\aotian\src\main\java\com\bencaojc\pojo" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.bencaojc.mapper" />
@@ -88,12 +99,8 @@
       <recent name="com.bencaojc.demo" />
       <recent name="com.bencaojc.aotian" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="D:\soft\develop\aotian\src\main\resources\mapper" />
-      <recent name="D:\soft\develop\aotian\src\main\webapp\WEB-INF\jsp\upload" />
-      <recent name="D:\soft\develop\aotian\src\main\resources\static" />
-      <recent name="D:\soft\develop\aotian\src\main\webapp\WEB-INF\jsp" />
-      <recent name="D:\soft\develop\aotian\src\main\webapp\WEB-INF" />
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.bencaojc.utils.excel" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AotianApplication">
@@ -106,6 +113,20 @@
     </configuration>
     <configuration name="FeiyuClueTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.bencaojc.aotian.FeiyuClueTest" />
+      <module name="aotian" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bencaojc.aotian.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TableTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.bencaojc.aotian.TableTest" />
       <module name="aotian" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
@@ -152,23 +173,6 @@
       <option name="PACKAGE_NAME" value="com.bencaojc.aotian" />
       <option name="MAIN_CLASS_NAME" value="com.bencaojc.aotian.Demo3" />
       <option name="METHOD_NAME" value="allot2" />
-      <option name="TEST_OBJECT" value="method" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Demo5.testConfig" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="aotian" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.bencaojc.aotian.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.bencaojc.aotian" />
-      <option name="MAIN_CLASS_NAME" value="com.bencaojc.aotian.Demo5" />
-      <option name="METHOD_NAME" value="testConfig" />
       <option name="TEST_OBJECT" value="method" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
       <method v="2">
@@ -226,7 +230,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.FeiyuClueTest" />
-      <item itemvalue="JUnit.Demo5.testConfig" />
+      <item itemvalue="Application.TableTest" />
       <item itemvalue="JUnit.Demo3.allot" />
       <item itemvalue="JUnit.Demo3.allot2" />
       <item itemvalue="JUnit.FeiyuClueTest.improFeiyuClueFromEXcel" />
@@ -234,11 +238,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.TableTest" />
         <item itemvalue="Application.FeiyuClueTest" />
         <item itemvalue="JUnit.FeiyuClueTest.improFeiyuClueFromEXcel" />
         <item itemvalue="JUnit.Demo3.allot" />
         <item itemvalue="JUnit.Demo3.allot2" />
-        <item itemvalue="JUnit.Demo5.testConfig" />
       </list>
     </recent_temporary>
   </component>
@@ -281,6 +285,11 @@
       <workItem from="1619420508793" duration="8535000" />
       <workItem from="1619487392023" duration="1738000" />
       <workItem from="1619489145103" duration="21232000" />
+      <workItem from="1619569946843" duration="6049000" />
+      <workItem from="1619577758501" duration="306000" />
+      <workItem from="1619578076368" duration="802000" />
+      <workItem from="1619578899918" duration="5900000" />
+      <workItem from="1619593324676" duration="12184000" />
     </task>
     <task id="LOCAL-00001" summary="Demo5 解析处理表格数据">
       <created>1616825975531</created>
@@ -320,15 +329,6 @@
     <option name="localTasksCounter" value="6" />
     <servers />
   </component>
-  <component name="TodoView">
-    <todo-panel id="selected-file">
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-    <todo-panel id="all">
-      <are-packages-shown value="true" />
-      <is-autoscroll-to-source value="true" />
-    </todo-panel>
-  </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
   </component>
@@ -338,54 +338,58 @@
     <option name="LAST_COMMIT_MESSAGE" value="测试" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="710" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1619513136079">
+    <state x="710" y="220" key="#com.intellij.ide.util.MemberChooser" timestamp="1619597494791">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="710" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1619513136079" />
+    <state x="710" y="220" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1619597494791" />
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1619424312899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619424312899" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1619426982036">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1619579181697">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619426982036" />
-    <state width="1877" height="407" key="GridCell.Tab.0.bottom" timestamp="1619516437240">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619579181697" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1619577737983">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="407" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619516437240" />
-    <state width="1877" height="407" key="GridCell.Tab.0.center" timestamp="1619516437240">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1619577737983" />
+    <state width="1877" height="271" key="GridCell.Tab.0.bottom" timestamp="1619605530646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="407" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619516437240" />
-    <state width="1877" height="407" key="GridCell.Tab.0.left" timestamp="1619516437240">
+    <state width="1877" height="271" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619605530646" />
+    <state width="1877" height="271" key="GridCell.Tab.0.center" timestamp="1619605530646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="407" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619516437240" />
-    <state width="1877" height="407" key="GridCell.Tab.0.right" timestamp="1619516437240">
+    <state width="1877" height="271" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619605530646" />
+    <state width="1877" height="271" key="GridCell.Tab.0.left" timestamp="1619605530646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="407" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619516437240" />
-    <state width="1877" height="407" key="GridCell.Tab.1.bottom" timestamp="1619516437240">
+    <state width="1877" height="271" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619605530646" />
+    <state width="1877" height="271" key="GridCell.Tab.0.right" timestamp="1619605530646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="407" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619516437240" />
-    <state width="1877" height="407" key="GridCell.Tab.1.center" timestamp="1619516437240">
+    <state width="1877" height="271" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619605530646" />
+    <state width="1877" height="462" key="GridCell.Tab.1.bottom" timestamp="1619605530621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="407" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619516437240" />
-    <state width="1877" height="407" key="GridCell.Tab.1.left" timestamp="1619516437240">
+    <state width="1877" height="462" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1619605530621" />
+    <state width="1877" height="462" key="GridCell.Tab.1.center" timestamp="1619605530621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="407" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619516437240" />
-    <state width="1877" height="407" key="GridCell.Tab.1.right" timestamp="1619516437240">
+    <state width="1877" height="462" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1619605530621" />
+    <state width="1877" height="462" key="GridCell.Tab.1.left" timestamp="1619605530621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="407" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619516437240" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1619488877229">
+    <state width="1877" height="462" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1619605530621" />
+    <state width="1877" height="462" key="GridCell.Tab.1.right" timestamp="1619605530621">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1619488877229" />
+    <state width="1877" height="462" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1619605530621" />
+    <state x="111" y="140" width="1222" height="776" key="SettingsEditor" timestamp="1619578241289">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="111" y="140" width="1222" height="776" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1619578241289" />
     <state x="759" y="297" key="chooseDestDirectoryDialog" timestamp="1619507933185">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -398,10 +402,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="661" y="275" key="refactoring.ChangeSignatureDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1619418515629" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1619511867306">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1619574982912">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619511867306" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1619574982912" />
   </component>
   <component name="masterDetails">
     <states>

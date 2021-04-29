@@ -1,5 +1,6 @@
 package com.bencaojc.mapper;
 
+import com.bencaojc.dto.AdCountTableData;
 import com.bencaojc.dto.AdNameCustomerGradeCount;
 import com.bencaojc.pojo.AotianCustomer;
 import org.apache.ibatis.annotations.Mapper;
@@ -33,4 +34,13 @@ public interface AotianCustomerMapper {
     List<AdNameCustomerGradeCount> selectCountByCustomerGrade(AdNameCustomerGradeCount customerGrade);
 
 
+    List<AdNameCustomerGradeCount> selectCountByAdNameList(AdNameCustomerGradeCount adName);
+
+    List<AdNameCustomerGradeCount> selectAdNameListAndCount(AdNameCustomerGradeCount adNameCustomerGradeCount);
+
+    List<AdNameCustomerGradeCount> selectAllGrade();
+
+    List<AdNameCustomerGradeCount> selectAdCountByGrade(AdNameCustomerGradeCount adcount);
+
+    List<AdCountTableData> selectAdCountByGradeToTable(AdNameCustomerGradeCount adcount);
 }

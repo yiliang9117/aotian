@@ -188,14 +188,33 @@ public class FeiyuClueServer {
         Cell cell22 = row.getCell(21);
         cell22.setCellType(HSSFCell.CELL_TYPE_STRING);
         feiyuClue.setAdId(cell22.getStringCellValue());
+        System.out.println(cell22.getStringCellValue());
+
+
+        //广告主名称
+        Cell cell29 = row.getCell(28);
+
+        if (null!=cell29){
+            cell29.setCellType(HSSFCell.CELL_TYPE_STRING);
+            feiyuClue.setAdvertiserName(cell29.getStringCellValue());
+
 //计划名称
-        Cell cell23 = row.getCell(22);
-        if (null!=cell23){
-            cell23.setCellType(HSSFCell.CELL_TYPE_STRING);
-            feiyuClue.setAdName(cell23.getStringCellValue());
+            Cell cell23 = row.getCell(22);
+            if (null!=cell23){
+                cell23.setCellType(HSSFCell.CELL_TYPE_STRING);
+                feiyuClue.setAdName(cell23.getStringCellValue());
+                feiyuClue.setAdvertiserNameAdName(cell29.getStringCellValue()+"-"+cell23.getStringCellValue());
+            }else {
+                feiyuClue.setAdvertiserNameAdName(cell29.getStringCellValue()+"-"+ "未知");
+
+                feiyuClue.setAdName("未知");
+            }
+
         }else {
+            feiyuClue.setAdvertiserNameAdName("未知账户-"+ "未知");
             feiyuClue.setAdName("未知");
         }
+
 
 
 //创建时间
@@ -217,14 +236,13 @@ public class FeiyuClueServer {
         feiyuClue.setAdvertiserId(cell28.getStringCellValue());
 
 
-//广告主名称
-        Cell cell29 = row.getCell(28);
-        cell29.setCellType(HSSFCell.CELL_TYPE_STRING);
-        feiyuClue.setAdvertiserName(cell29.getStringCellValue());
 
        /* Cell cell = row.getCell(22);
         cell.setCellType(HSSFCell.CELL_TYPE_STRING);
         feiyuClue.setTelephone(cell.getStringCellValue());*/
+
+
+
 
         return feiyuClue;
     }
@@ -238,6 +256,8 @@ public class FeiyuClueServer {
         }
 
         for (int i=0;i<feiyuClueFromExcel.size();i++){
+            System.out.println("飞鱼，共："+feiyuClueFromExcel.size()+"个，第"+i+"个");
+
             int count = feiyuClueMapper.selectCountByClueId(feiyuClueFromExcel.get(i).getClueId());
             System.out.println(count);
             if (0==count){

@@ -16,6 +16,9 @@ import org.springframework.stereotype.Service;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -91,7 +94,26 @@ public class AotianCustomerService {
         aotianCustomer.setTelephone(telephone);
 
 
-        Cell cell8 = row.getCell(7);
+        Cell cell7 = row.getCell(6);
+        cell7.setCellType(HSSFCell.CELL_TYPE_STRING);
+        String strDate = cell7.getStringCellValue();
+
+
+
+//注意：SimpleDateFormat构造函数的样式与strDate的样式必须相符
+        SimpleDateFormat simpleDateFormat=new SimpleDateFormat("yyyy年MM月dd日 ");
+        SimpleDateFormat sDateFormat=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); //加上时间
+//必须捕获异常
+        try {
+            Date date=simpleDateFormat.parse(strDate);
+            aotianCustomer.setCreatTime(date);
+        } catch(ParseException px) {
+            px.printStackTrace();
+        }
+
+
+
+        Cell cell8 = row.getCell(6);
         cell8.setCellType(HSSFCell.CELL_TYPE_STRING);
         String customerServiceId = cell8.getStringCellValue();
         aotianCustomer.setCustomerServiceId(customerServiceId);
@@ -125,7 +147,11 @@ public class AotianCustomerService {
 
     public void saveAotianCustomerList(List<AotianCustomer> aotianCustomers) {
 
-        for (AotianCustomer aotianCustomer:aotianCustomers ){
+        for (int i=0;0<aotianCustomers.size();i++ ){
+            AotianCustomer aotianCustomer = aotianCustomers.get(i);
+//            for (AotianCustomer aotianCustomer:aotianCustomers ){
+
+            System.out.println("傲天，共："+aotianCustomers.size()+"个，第"+i+"个");
             int count = aotianCustomerMapper.selectCountAotianCustomerByTelephone(aotianCustomer.getTelephone());
 //            int count = 0;
             System.out.println(count);

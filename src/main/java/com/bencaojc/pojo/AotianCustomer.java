@@ -48,6 +48,7 @@ public class AotianCustomer implements Serializable {
 
     private String department;
 
+
     @Override
     public String toString() {
         return "AotianCustomer{" +
